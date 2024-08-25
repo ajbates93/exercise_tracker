@@ -8,6 +8,7 @@ defmodule ExerciseTrackerWeb.Router do
   scope "/api", ExerciseTrackerWeb do
     pipe_through :api
     resources "/exercises", ExerciseController, except: [:new, :edit]
+    resources "/exercise_types", ExerciseTypeController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

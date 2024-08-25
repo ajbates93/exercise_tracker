@@ -4,6 +4,7 @@ defmodule ExerciseTracker.Workouts.ExerciseType do
 
   schema "exercise_types" do
     field :name, :string
+    has_many :exercises, ExerciseTracker.Workouts.Exercise
 
     timestamps(type: :utc_datetime)
   end

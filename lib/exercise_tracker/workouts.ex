@@ -114,7 +114,10 @@ defmodule ExerciseTracker.Workouts do
 
   """
   def list_exercises do
-    Repo.all(Exercise)
+    Exercise
+    |> preload(:exercise_type)
+    |> preload(:user)
+    |> Repo.all()
   end
 
   @doc """

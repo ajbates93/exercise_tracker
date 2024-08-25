@@ -5,8 +5,8 @@ defmodule ExerciseTracker.Workouts.Exercise do
   schema "exercises" do
     field :date, :date
     field :duration, :integer
-    field :user_id, :id
-    field :exercise_type_id, :id
+    belongs_to :user, ExerciseTracker.Accounts.User
+    belongs_to :exercise_type, ExerciseTracker.Workouts.ExerciseType
 
     timestamps(type: :utc_datetime)
   end
@@ -14,7 +14,7 @@ defmodule ExerciseTracker.Workouts.Exercise do
   @doc false
   def changeset(exercise, attrs) do
     exercise
-    |> cast(attrs, [:date, :duration])
-    |> validate_required([:date, :duration])
+    |> cast(attrs, [:date, :duration, :user_id, :exercise_type_id])
+    |> validate_required([:date, :duration, :user_id, :exercise_type_id])
   end
 end

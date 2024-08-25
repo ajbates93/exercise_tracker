@@ -32,4 +32,18 @@ defmodule ExerciseTracker.WorkoutsFixtures do
 
     exercise
   end
+
+  @doc """
+  Generate a exercise_types.
+  """
+  def exercise_types_fixture(attrs \\ %{}) do
+    {:ok, exercise_types} =
+      attrs
+      |> Enum.into(%{
+        name: "some name"
+      })
+      |> ExerciseTracker.Workouts.create_exercise_types()
+
+    exercise_types
+  end
 end

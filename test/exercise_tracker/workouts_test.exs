@@ -112,4 +112,58 @@ defmodule ExerciseTracker.WorkoutsTest do
       assert %Ecto.Changeset{} = Workouts.change_exercise(exercise)
     end
   end
+
+  describe "exercise_types" do
+    alias ExerciseTracker.Workouts.ExerciseTypes
+
+    import ExerciseTracker.WorkoutsFixtures
+
+    @invalid_attrs %{name: nil}
+
+    test "list_exercise_types/0 returns all exercise_types" do
+      exercise_types = exercise_types_fixture()
+      assert Workouts.list_exercise_types() == [exercise_types]
+    end
+
+    test "get_exercise_types!/1 returns the exercise_types with given id" do
+      exercise_types = exercise_types_fixture()
+      assert Workouts.get_exercise_types!(exercise_types.id) == exercise_types
+    end
+
+    test "create_exercise_types/1 with valid data creates a exercise_types" do
+      valid_attrs = %{name: "some name"}
+
+      assert {:ok, %ExerciseTypes{} = exercise_types} = Workouts.create_exercise_types(valid_attrs)
+      assert exercise_types.name == "some name"
+    end
+
+    test "create_exercise_types/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Workouts.create_exercise_types(@invalid_attrs)
+    end
+
+    test "update_exercise_types/2 with valid data updates the exercise_types" do
+      exercise_types = exercise_types_fixture()
+      update_attrs = %{name: "some updated name"}
+
+      assert {:ok, %ExerciseTypes{} = exercise_types} = Workouts.update_exercise_types(exercise_types, update_attrs)
+      assert exercise_types.name == "some updated name"
+    end
+
+    test "update_exercise_types/2 with invalid data returns error changeset" do
+      exercise_types = exercise_types_fixture()
+      assert {:error, %Ecto.Changeset{}} = Workouts.update_exercise_types(exercise_types, @invalid_attrs)
+      assert exercise_types == Workouts.get_exercise_types!(exercise_types.id)
+    end
+
+    test "delete_exercise_types/1 deletes the exercise_types" do
+      exercise_types = exercise_types_fixture()
+      assert {:ok, %ExerciseTypes{}} = Workouts.delete_exercise_types(exercise_types)
+      assert_raise Ecto.NoResultsError, fn -> Workouts.get_exercise_types!(exercise_types.id) end
+    end
+
+    test "change_exercise_types/1 returns a exercise_types changeset" do
+      exercise_types = exercise_types_fixture()
+      assert %Ecto.Changeset{} = Workouts.change_exercise_types(exercise_types)
+    end
+  end
 end

@@ -19,7 +19,11 @@ defmodule ExerciseTrackerWeb.ExerciseJSON do
     %{
       id: exercise.id,
       date: exercise.date,
-      duration: exercise.duration
+      duration: exercise.duration,
+      exercise_type_id: exercise.exercise_type_id,
+      exercise_type_name: exercise.exercise_type && exercise.exercise_type.name,
+      user_id: exercise.user_id,
+      user_name: exercise.user && exercise.user.name
     }
   end
 end
