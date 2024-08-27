@@ -32,12 +32,12 @@ strength = Repo.insert!(%ExerciseType{name: "Strength"})
 
 # Create exercises
 exercises = [
-  %{user_id: user1.id, exercise_type_id: running.id, date: ~D[2023-05-01], duration: 30},
-  %{user_id: user1.id, exercise_type_id: yoga.id, date: ~D[2023-05-02], duration: 45},
-  %{user_id: user1.id, exercise_type_id: strength.id, date: ~D[2023-05-03], duration: 60},
-  %{user_id: user2.id, exercise_type_id: padel.id, date: ~D[2023-05-01], duration: 90},
-  %{user_id: user2.id, exercise_type_id: running.id, date: ~D[2023-05-02], duration: 45},
-  %{user_id: user2.id, exercise_type_id: yoga.id, date: ~D[2023-05-03], duration: 60}
+  %{user_id: user1.id, exercise_type_id: running.id, date: ~D[2024-08-26]},
+  %{user_id: user1.id, exercise_type_id: yoga.id, date: ~D[2024-08-27]},
+  %{user_id: user1.id, exercise_type_id: strength.id, date: ~D[2024-08-27]},
+  %{user_id: user2.id, exercise_type_id: padel.id, date: ~D[2024-08-27]},
+  %{user_id: user2.id, exercise_type_id: running.id, date: ~D[2024-08-28]},
+  %{user_id: user2.id, exercise_type_id: yoga.id, date: ~D[2024-08-29]}
 ]
 
 Enum.each(exercises, fn exercise_data ->

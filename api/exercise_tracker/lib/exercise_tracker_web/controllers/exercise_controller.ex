@@ -3,8 +3,9 @@ defmodule ExerciseTrackerWeb.ExerciseController do
 
   alias ExerciseTracker.Workouts
   alias ExerciseTracker.Workouts.Exercise
+  alias ExerciseTrackerWeb.APIResponse
 
-  action_fallback ExerciseTrackerWeb.FallbackController
+  action_fallback(ExerciseTrackerWeb.FallbackController)
 
   def index(conn, _params) do
     exercises = Workouts.list_exercises()

@@ -35,13 +35,18 @@ defmodule ExerciseTracker.WorkoutsTest do
       exercise_type = exercise_type_fixture()
       update_attrs = %{name: "some updated name"}
 
-      assert {:ok, %ExerciseType{} = exercise_type} = Workouts.update_exercise_type(exercise_type, update_attrs)
+      assert {:ok, %ExerciseType{} = exercise_type} =
+               Workouts.update_exercise_type(exercise_type, update_attrs)
+
       assert exercise_type.name == "some updated name"
     end
 
     test "update_exercise_type/2 with invalid data returns error changeset" do
       exercise_type = exercise_type_fixture()
-      assert {:error, %Ecto.Changeset{}} = Workouts.update_exercise_type(exercise_type, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Workouts.update_exercise_type(exercise_type, @invalid_attrs)
+
       assert exercise_type == Workouts.get_exercise_type!(exercise_type.id)
     end
 
@@ -62,7 +67,7 @@ defmodule ExerciseTracker.WorkoutsTest do
 
     import ExerciseTracker.WorkoutsFixtures
 
-    @invalid_attrs %{date: nil, duration: nil}
+    @invalid_attrs %{date: nil}
 
     test "list_exercises/0 returns all exercises" do
       exercise = exercise_fixture()
@@ -133,7 +138,9 @@ defmodule ExerciseTracker.WorkoutsTest do
     test "create_exercise_types/1 with valid data creates a exercise_types" do
       valid_attrs = %{name: "some name"}
 
-      assert {:ok, %ExerciseTypes{} = exercise_types} = Workouts.create_exercise_types(valid_attrs)
+      assert {:ok, %ExerciseTypes{} = exercise_types} =
+               Workouts.create_exercise_types(valid_attrs)
+
       assert exercise_types.name == "some name"
     end
 
@@ -145,13 +152,18 @@ defmodule ExerciseTracker.WorkoutsTest do
       exercise_types = exercise_types_fixture()
       update_attrs = %{name: "some updated name"}
 
-      assert {:ok, %ExerciseTypes{} = exercise_types} = Workouts.update_exercise_types(exercise_types, update_attrs)
+      assert {:ok, %ExerciseTypes{} = exercise_types} =
+               Workouts.update_exercise_types(exercise_types, update_attrs)
+
       assert exercise_types.name == "some updated name"
     end
 
     test "update_exercise_types/2 with invalid data returns error changeset" do
       exercise_types = exercise_types_fixture()
-      assert {:error, %Ecto.Changeset{}} = Workouts.update_exercise_types(exercise_types, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Workouts.update_exercise_types(exercise_types, @invalid_attrs)
+
       assert exercise_types == Workouts.get_exercise_types!(exercise_types.id)
     end
 

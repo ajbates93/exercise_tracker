@@ -1,27 +1,27 @@
 # The directory Mix will write compiled artifacts to.
-/_build/
+api/exercise_tracker/_build/
 
 # If you run "mix test --cover", coverage assets end up here.
-/cover/
+api/exercise_tracker/cover/
 
 # The directory Mix downloads your dependencies sources to.
-/deps/
+api/exercise_tracker/deps/
 
 # Where 3rd-party dependencies like ExDoc output generated docs.
-/doc/
+api/exercise_tracker/doc/
 
 # Ignore .fetch files in case you like to edit your project deps locally.
-/.fetch
+api/exercise_tracker/.fetch
 
 # If the VM crashes, it generates a dump, let's ignore it too.
-erl_crash.dump
+api/exercise_tracker/erl_crash.dump
 
 # Also ignore archive artifacts (built via "mix archive.build").
-*.ez
+api/exercise_tracker/*.ez
 
 # Temporary files, for example, from tests.
-/tmp/
+api/exercise_tracker/tmp/
 
 # Ignore package tarball (built via "mix hex.build").
-exercise_tracker-*.tar
+api/exercise_tracker/exercise_tracker-*.tar
 
