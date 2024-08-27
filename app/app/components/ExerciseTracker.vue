@@ -21,10 +21,31 @@
       v-for="(day, idx) in listOfExercises"
     >
       <div :key="idx">
-        <h2 class="text-xl font-bold">{{ day.date }}</h2>
+        <h2 class="text-xl font-bold mb-5">
+          {{
+            day.date.toLocaleDateString("en-UK", {
+              weekday: "long",
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            })
+          }}
+        </h2>
         <ul>
-          <li v-for="exercise in day.exercises">
-            {{ exercise.exercise_type }}
+          <li
+            class="p-5 shadow mb-5 flex items-center gap-5"
+            v-for="(exercise, idx) in day.exercises"
+          >
+            <div class="exercise-icon icon">
+              <UIcon
+                class="w-7 h-7"
+                :name="getExerciseIcon(exercise.exercise_type_name)"
+              />
+            </div>
+            <div class="exercise-content">
+              <p class="">{{ exercise.user_name }}</p>
+              <p>{{ exercise.exercise_type_name }}</p>
+            </div>
           </li>
         </ul>
       </div>
@@ -40,6 +61,7 @@ import type {
   ExerciseTrackerDay,
   APIBaseResponse,
 } from "~/types";
+
 type ExerciseAPIResponse = {
   id: number;
   date: string;
@@ -64,7 +86,6 @@ const initialiseExerciseTrackerDays = async () => {
   );
   exercisesFromAPI.value = response.data;
   mapExercisesFromAPIToDays();
-  console.log(listOfExercises.value);
 };
 
 // Return a date from a number. For example, if the number is 0, return today's date.
@@ -72,6 +93,26 @@ const getDateFromNumber = (number: number) => {
   const today = new Date();
   today.setDate(today.getDate() + number);
   return today;
+};
+
+// Get the icon name based on the exercise type name.
+const getExerciseIcon = (exerciseTypeName: string) => {
+  switch (exerciseTypeName) {
+    case "Running":
+      return "i-healthicons-running";
+    case "Cycling":
+      return "i-healthicons-cycling";
+    case "Swimming":
+      return "i-healthicons-swimming";
+    case "Yoga":
+      return "i-healthicons-exercise-yoga";
+    case "Strength":
+      return "i-healthicons-exercise-weights";
+    case "Padel":
+      return "i-material-symbols-sports-tennis";
+    default:
+      return "running";
+  }
 };
 
 // Loop through every day and map the exercises from the API to the days.

@@ -2,9 +2,12 @@ export type ExerciseTrackerView = "List" | "Calendar";
 
 export type ExerciseTrackerExercise = {
   id: string;
-  exercise_type: string;
-  user: string;
   date: string;
+  duration?: number;
+  exercise_type_id: number;
+  exercise_type_name: string;
+  user_id: number;
+  user_name: string;
 };
 
 export type ExerciseTrackerDay = {
